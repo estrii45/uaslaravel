@@ -2,7 +2,7 @@
 
 namespace App;
 use App\nilai;
-use App\model\matkul;
+use App\matkul;
 use App\mahasiswa;
 use Illuminate\Database\Eloquent\Model;
 

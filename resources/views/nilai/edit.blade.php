@@ -12,14 +12,10 @@
                 @csrf
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col">   
+                            <div class="col">
+
                                 <label form="">Nama mahasiswa</label>
-                                <select name="mahsiswa_id" id="mahasiswa_id"  class="form-control" >
-                                    <option value="" disabled selection>...pilih nama...</option>
-                                    @foreach ($mahasiswa as $mhs)
-                                    <option value="{{ $mhs->id}}" {{ $nilai->mahasiwa_id == $mhs->id  ? 'selected' : '' }}>{{$mhs->name}}</option>
-                                    @endforeach
-</select>
+                                <input type="text" value="{{$user->name}}" name="name" id="name"  >
                             </div> 
                             <div class="col">
                             <label form="">Nama Matkul</label>

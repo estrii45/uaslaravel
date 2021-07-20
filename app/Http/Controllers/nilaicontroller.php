@@ -5,11 +5,12 @@ use App\nilai;
 use Illuminate\Http\Request;
 use App\matkul;
 use App\mahasiswa;
+use App\user;
 class nilaicontroller extends Controller
 {
     public function index()
     {
-        $nilai= nilai::with(['mahasiswa'.'matkul'])->get();
+        $nilai= nilai::with(['mahasiswa','matkul'])->get();
         return view('nilai.index', compact('nilai'));
     }
 
@@ -27,13 +28,23 @@ class nilaicontroller extends Controller
         return redirect()->route('nilai');
     }
 
+    public function edit(request $request, $id)
+    {
+        $matkul = matkul::all();
+        $nilai = nilai::find($id);
+        $user = user::find($nilai->mahasiswa_id);
+        return view('nilai.edit',  compact('nilai', 'matkul','user'));
+    }
+    /*
     public function edit(Request $request, $id)
     {
         $matkul = matkul::all();
-        $mahasiswa = mahasiswa::all();
-        $nilai = nilai::all();
-        return view('nilai.edit', compact('nilai', 'matkul', 'mahasiswa'));
+        $nilai = nilai::find($id);
+        $user = user::find($nilai->mahasiswa_id);
+        
+        return view('nilai.edit', compact('nilai', 'matkul', 'user'));
     }
+    */
 
     public function update(Request $request, $id)
     {
